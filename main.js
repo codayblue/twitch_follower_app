@@ -1,17 +1,22 @@
 var fs = require('fs');
 var https = require('https');
+var close = true;
+var user = [];
+var num = "";
 
 function getSettings() {
-	
-	var data = fs.readFileSync('settings.csv', 'UTF-8');
-	var settings = data.split(",");
+	var settings = [];
+	var fdata = fs.readFileSync('settings.csv', 'utf8');
+	settings = fdata.split(",");
+
+	//console.log(settings);
 
 	return settings;
 }
 
 function getData(username) {
 
-	var data = {};
+	var idata = {};
 
 	var options = {
   		hostname: 'api.twitch.tv',
@@ -24,10 +29,13 @@ function getData(username) {
 	};
 
 	var req = https.request(options, function(res){
-		res.setEncoding('UTF-8');
+		res.setEncoding('utf8');
 	  	res.on('data', function (chunk) {
 	  		var obj = JSON.parse(chunk);
-	    	data = obj._total;
+	    	idata = obj._total;
+	    	num = String(idata);
+	    	
+	    	//console.log(idata);
   		});
 
 	});
@@ -38,13 +46,33 @@ function getData(username) {
 
 	req.end();
 
-	return data;
+	//return req;
 }
 
-function setSettings(uname, intval, goal, dintval) {
+function setData(data) {
+
+	var set = [];
+	set = getSettings();
+
+	var sent = set[1] + " Goal " + data + "/" + set[2];
+
+	console.log(data);
+
+	writeToFile('goal.txt', sent);
+}
+
+function writeToFile(fileName, data) {
+
+	fs.writeFileSync(fileName, data);
 
 }
 
-function writeToFile(fileName, File, encoding, data) {
+user = getSettings();
+getData(user[0]);
 
-}
+console.log("To exit press ctrl-c");
+setInterval(function() {
+	getData(user[0]);
+	console.log("it fired");
+	setData(num);
+}, 60000);
