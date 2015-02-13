@@ -56,7 +56,7 @@ function setData(data) {
 
 	var sent = set[1] + " Goal " + data + "/" + set[2];
 
-	console.log(data);
+	//console.log(data);
 
 	writeToFile('goal.txt', sent);
 }
@@ -68,6 +68,7 @@ function writeToFile(fileName, data) {
 }
 
 user = getSettings();
+intval = user[3] * 1000;
 getData(user[0]);
 
 console.log("To exit press ctrl-c");
@@ -75,4 +76,4 @@ setInterval(function() {
 	getData(user[0]);
 	console.log("it fired");
 	setData(num);
-}, 60000);
+}, intval);
