@@ -22,7 +22,7 @@ Steps to run the program
    app fires a check to twitch. Every time some one follows you and twitch has it saved it will auto update 
    count on the screen.
 
-# Plans for furture
+# Plans For Future
 
 1. add sub support instead of followers it will be based on subs.
 2. Anything else the community or I can think of.
