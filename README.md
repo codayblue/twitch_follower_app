@@ -4,15 +4,25 @@ So this is an app you can use to keep track of how many people follow you now an
 point obs to. It auto updates so as people follow your channel it will change the number and obs will auto see it so if
 you have the text showing on your stream people can see it there.
 
-Right now it is working and you can use it but you will have to set the settings by hand. I plan on fixing this very soon with
-batch files. Also you will need node in order for the app to work. So if you would like to run it now you can do a git clone 
-or download from github. After you have it you can open up settings.csv, this is the file that holds the settings. So the order
-you change them in is channel, what is your goal (ex Monthly, Weekly, Yearly), then you have whats the goal how many followers
-are you aiming for, then last is the interval (in seconds). The interval does not show up on stream but is how often you want to
-pull information from twitch. I suggest leaving that at 60 seconds.
+The core is finished and more updates will come that will add support for subs and other features people request.
+
+To use this program you must have node downloaded and installed. you can get node from http://nodejs.org also you will
+need to download this program (button is to the right) and unzip if nesscery. you can put it anywhere you like. if you
+are running linux you can still use this program but the batch files will not work so just ignore that and make a
+settings.csv file with the channel name, weekly monthly or yealy keyword, then your follower goal amount, and interval
+you want to check twitch (this is in seconds). In that order all seperated like so codayblue,weekly,50,60
+
+Steps to run the program
+
+1. Run setSettings.bat (you must put a channel name is and make it matches the twitch url caps and spelling)
+2. Run start.bat (do not close this window and it will tell you ever time it runs by saying it fired) to exit
+   when down streaming press ctrl + c.
+3. Open OBS (If not already open).
+4. In your sources make a text layer and tell it to pull from goal.txt which will show up the first time the
+   app fires a check to twitch. Every time some one follows you and twitch has it saved it will auto update 
+   count on the screen.
 
 # Plans for furture
 
-1. add batch files to set settings and start the app.
-2. add sub support instead of followers it will be based on subs.
-3. Anything else the community or I can think of.
+1. add sub support instead of followers it will be based on subs.
+2. Anything else the community or I can think of.
