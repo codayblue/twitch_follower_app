@@ -13,7 +13,7 @@ also works on linux.
 Steps to run the program
 
 1. Run npm install (Only need to do this first time once downloaded)
-2. Run start.bat (do not close this window and it will tell you every time it runs by saying it fired) to exit
+2. Run node main.js (do not close this window and it will tell you every time it runs by saying it fired) to exit
    when done streaming press ctrl + c. first time running make sure to select option 2 to set the settings
 3. Open OBS (If not already open).
 4. In your sources make a text layer and tell it to pull from goal.txt which will show up the first time the
