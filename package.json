@@ -1,0 +1,23 @@
+{
+  "name": "twitch_follower_app",
+  "version": "1.0.0",
+  "description": "So this is an app you can use to keep track of how many people follow you now and also will auto generate a text file you\r point obs to. It auto updates so as people follow your channel it will change the number and obs will auto see it so if\r you have the text showing on your stream people can see it there.",
+  "main": "main.js",
+  "dependencies": {
+    "prompt": "^0.2.14"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/codayblue/twitch_follower_app.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/codayblue/twitch_follower_app/issues"
+  },
+  "homepage": "https://github.com/codayblue/twitch_follower_app"
+}

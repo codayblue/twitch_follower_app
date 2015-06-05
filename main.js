@@ -1,15 +1,16 @@
 var fs = require('fs');
 var https = require('https');
+var prompt = require('prompt');
 var close = true;
 var user = [];
 var num = "";
 
 function getSettings() {
 	var settings = [];
-	var fdata = fs.readFileSync('settings.csv', 'utf8');
-	settings = fdata.split(",");
+	var fdata = fs.readFileSync('settings.json', 'utf8');
+	settings = JSON.parse(fdata);
 
-	//console.log(settings);
+	console.log(settings);
 
 	return settings;
 }
@@ -54,7 +55,7 @@ function setData(data) {
 	var set = [];
 	set = getSettings();
 
-	var sent = set[1] + " Goal " + data + "/" + set[2];
+	var sent = set.text + " Goal " + data + "/" + set.victory;
 
 	//console.log(data);
 
@@ -67,13 +68,51 @@ function writeToFile(fileName, data) {
 
 }
 
-user = getSettings();
-intval = user[3] * 1000;
-getData(user[0]);
+function setSettings(user, time, goal, intval) {
+	var settings = {};
+	var settingsFile = '';
+	
+	settings = {
+					username: user,
+					text: time,
+					victory: goal,
+					refresh: intval			
+			   };
+    settingsFile = '{"username":"' + settings.username + 
+				   '","text":"' + settings.text + 
+				   '","victory":"' + settings.victory + 
+				   '","refresh":"' + settings.refresh +
+				   '"}';
+			   
+    writeToFile('settings.json', settingsFile);
+	
+}
 
-console.log("To exit press ctrl-c");
-setInterval(function() {
-	getData(user[0]);
-	console.log("it fired");
-	setData(num);
-}, intval);
+prompt.start();
+
+console.log('Please Select a function');
+console.log('1. run');
+console.log('2. set settings');
+
+prompt.get(['run'], function(err, result){
+	
+if(result.run == 1){
+	user = getSettings();
+	var intval = user.refresh * 1000;
+	getData(user.username);
+	
+	console.log("To exit press ctrl-c");
+	setInterval(function() {
+		getData(user.username);
+		console.log("it fired");
+		setData(num);
+	}, intval);
+} else if (result.run == 2) {
+	prompt.get(['username','timeframe','goal','interval'], function(err, result){
+		setSettings(result.username, result.timeframe, result.goal, result.interval);
+	});
+} else {
+	console.log('Error: Please select a function as listed.');
+}
+
+});

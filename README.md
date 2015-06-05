@@ -7,16 +7,14 @@ you have the text showing on your stream people can see it there.
 The core is finished and more updates will come that will add support for subs and other features people request.
 
 To use this program you must have node downloaded and installed. you can get node from http://nodejs.org also you will
-need to download this program (button is to the right) and unzip if necessary. you can put it anywhere you like. if you
-are running linux you can still use this program but the batch files will not work so just ignore that and make a
-settings.csv file with the channel name, weekly monthly or yealy keyword, then your follower goal amount, and interval
-you want to check twitch (this is in seconds). In that order all seperated like so codayblue,weekly,50,60
+need to download this program (button is to the right) and unzip if necessary. you can put it anywhere you like. This app
+also works on linux.
 
 Steps to run the program
 
-1. Run setSettings.bat (you must put a channel name is and make it matches the twitch url caps and spelling)
-2. Run start.bat (do not close this window and it will tell you ever time it runs by saying it fired) to exit
-   when down streaming press ctrl + c.
+1. Run npm install (Only need to do this first time once downloaded)
+2. Run start.bat (do not close this window and it will tell you every time it runs by saying it fired) to exit
+   when done streaming press ctrl + c. first time running make sure to select option 2 to set the settings
 3. Open OBS (If not already open).
 4. In your sources make a text layer and tell it to pull from goal.txt which will show up the first time the
    app fires a check to twitch. Every time some one follows you and twitch has it saved it will auto update 
