@@ -24,3 +24,7 @@ Steps to run the program
 
 1. add sub support instead of followers it will be based on subs.
 2. Anything else the community or I can think of.
+
+# License
+
+This project is Licensed under the [MIT](https://opensource.org/licenses/MIT) License. Please View the License File.
